@@ -1,18 +1,18 @@
-function runAnimation(){
+function runAnimation() {
     const canvas = document.querySelector("canvas");
     const context = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.addEventListener("resize", function () {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    render();
-})
 
-function files(index) {
-    var data = `https://neverland.agency/assets/0001.ad04d6cb.webp
+    window.addEventListener("resize", function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        render();
+    })
+
+    function files(index) {
+        var data = `https://neverland.agency/assets/0001.ad04d6cb.webp
     https://neverland.agency/assets/0002.cfc021f0.webp
     https://neverland.agency/assets/0003.493bb9b2.webp
     https://neverland.agency/assets/0004.519dabfd.webp
@@ -192,400 +192,473 @@ function files(index) {
     https://neverland.agency/assets/0178.2686b4b2.webp
     https://neverland.agency/assets/0179.b39712df.webp
     https://neverland.agency/assets/0180.baf992ce.webp`;
-    return data.split("\n")[index];
-}
-
-const frameCount = 180;
-
-const images = [];
-const imageSeq = {
-    frame: 0
-};
-
-for (let i = 0; i < frameCount; i++) {
-    const img = new Image();
-    img.src = files(i);
-    images.push(img);
-}
-
-gsap.to(imageSeq, {
-    frame: frameCount - 1,
-    snap: "frame",
-    ease: "none",
-    scrollTrigger: {
-        trigger : "#home",
-        start : "bottom bottom",
-        scrub: 0.5
-    },
-    onUpdate: render
-});
-
-images[0].onload = render;
-
-function render() {
-    scaleImage(images[imageSeq.frame], context)
-}
-
-function scaleImage(img, ctx) {
-    var canvas = ctx.canvas;
-    var hRatio = canvas.width / img.width;
-    var vRatio = canvas.height / img.height;
-    var ratio = Math.max(hRatio, vRatio);
-    var centerShift_x = (canvas.width - img.width * ratio) / 2;
-    var centerShift_y = (canvas.height - img.height * ratio) / 2;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, 0, img.width, img.height,
-    centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
-
-
-
-
-
-}
-
-document.addEventListener("readystatechange",function () {
-    if(document.readyState === "complete"){
-        document.querySelector("#loader").style.display = "none";
+        return data.split("\n")[index];
     }
-})
-gsap.to("#loader>img",{
-    height : 65,
-    ease : Expo.easeInOut,
-    y : -250,
-    rotate : "360deg",
-    duration : 1.5
-})
+
+    const frameCount = 180;
+
+    const images = [];
+    const imageSeq = {
+        frame: 0
+    };
+
+    for (let i = 0; i < frameCount; i++) {
+        const img = new Image();
+        img.src = files(i);
+        images.push(img);
+    }
+
+    gsap.to(imageSeq, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        scrollTrigger: {
+            trigger: "#home",
+            start: "bottom bottom",
+            scrub: 0.5
+        },
+        onUpdate: render
+    });
+
+    images[0].onload = render;
+
+    function render() {
+        scaleImage(images[imageSeq.frame], context)
+    }
+
+    function scaleImage(img, ctx) {
+        var canvas = ctx.canvas;
+        var hRatio = canvas.width / img.width;
+        var vRatio = canvas.height / img.height;
+        var ratio = Math.max(hRatio, vRatio);
+        var centerShift_x = (canvas.width - img.width * ratio) / 2;
+        var centerShift_y = (canvas.height - img.height * ratio) / 2;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, img.width, img.height,
+            centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
 
 
 
-gsap.to("#home canvas",{
-    scale : .8,
-    scrollTrigger:{
+
+
+    }
+
+    document.addEventListener("readystatechange", function () {
+        if (document.readyState === "complete") {
+            document.querySelector("#loader").style.display = "none";
+        }
+    })
+    gsap.to("#loader>img", {
+        height: 65,
+        ease: Expo.easeInOut,
+        y: -250,
+        rotate: "360deg",
+        duration: 1.5
+    })
+
+
+
+    gsap.to("#home canvas", {
+        scale: .8,
+        scrollTrigger: {
+            trigger: "#home",
+            scrub: 0.8,
+            start: "bottom 40%"
+        }
+    })
+
+
+    ScrollTrigger.create({
         trigger: "#home",
-        scrub: 0.8,
-        start : "bottom 40%"
-    }
-})
+        start: "bottom 100%",
+        pin: true,
+    })
 
 
-ScrollTrigger.create({
-        trigger : "#home",
-        start:"bottom 100%",
-        pin:true,
-})
+    gsap.to("#page8 canvas", {
+        scale: .8,
+        scrollTrigger: {
+            trigger: "#page8",
+            scrub: 0.8,
+            start: "bottom 40%"
+        }
+    })
 
 
-gsap.to("#page8 canvas",{
-    scale : .8,
-    scrollTrigger:{
+    ScrollTrigger.create({
         trigger: "#page8",
-        scrub: 0.8,
-        start : "bottom 40%"
-    }
-})
-
-
-ScrollTrigger.create({
-        trigger : "#page8",
-        start:"bottom 100%",
-        pin:true,
-})
+        start: "bottom 100%",
+        pin: true,
+    })
 
 }
 runAnimation();
 
 document.querySelectorAll(".txt")
-.forEach( function(elem){
-    var clutter = "";
-    elem.textContent.split("").forEach(function (dets) {
-        clutter += `<span>${dets}</span>`;
+    .forEach(function (elem) {
+        var clutter = "";
+        elem.textContent.split("").forEach(function (dets) {
+            clutter += `<span>${dets}</span>`;
+        })
+        elem.innerHTML = clutter;
     })
-    elem.innerHTML = clutter;
-})
 
 document.querySelectorAll(".txt2")
-.forEach( function(elem1){
-    var clutter1 = "";
-    elem1.textContent.split('').forEach(function (dets1) {
-        clutter1 += `<span>${dets1}</span>`;
+    .forEach(function (elem1) {
+        var clutter1 = "";
+        elem1.textContent.split('').forEach(function (dets1) {
+            clutter1 += `<span>${dets1}</span>`;
+        })
+        elem1.innerHTML = clutter1;
     })
-    elem1.innerHTML = clutter1;
-})
 
 ScrollTrigger.create({
-    trigger : "#overlay",
-    pin : true,
-    scrubm: 0.8,
-    start : "bottom 100%"
+    trigger: "#overlay",
+    pin: true,
+    scrub: 0.8,
+    start: "bottom 100%"
 })
 
 var tl = gsap.timeline();
 tl
-.to("#overlay .txt span",{
-    opacity : 0,
-    scrollTrigger : {
-        scrub : 0.8,
-        trigger : "#overlay h1",
-        start : "top 10%",
-    },
-    stagger : .8,
-    // ease : Power3.easeInOut,
-})
-
-.to("#nav>img",{
-        scrollTrigger:{
-            start : "bottom 20%",
-            scrub : .1,
-            trigger : "#nav",
+    .to("#overlay .txt span", {
+        opacity: 0,
+        scrollTrigger: {
+            scrub: 0.8,
+            trigger: "#overlay h1",
+            start: "top 10%",
         },
-        ease : Expo.easeInOut,
+        stagger: .8,
+        // ease : Power3.easeInOut,
+    })
+
+    .to("#nav>img", {
+        scrollTrigger: {
+            start: "bottom 20%",
+            scrub: .1,
+            trigger: "#nav",
+        },
+        ease: Expo.easeInOut,
         filter: "invert(0%)"
-})
-.to("#nav #menu-icon .line",{
-    scrollTrigger:{
-        start : "bottom 20%",
-        scrub : 0.1,
-        trigger : "#nav",
-    },
-    backgroundColor : "black" 
-})
-.to("#nav #minor-box1",{
-    ease : Expo.easeInOut,
-    left : "-100%",
-    scrollTrigger:{
-        start : "top 0%",
-        // markers : true,
-        trigger : "#home",
-        scrub : 1,
-    },
-})
-.to("#page3>img",{
-    scrollTrigger:{
-        trigger:"#page2",
-        start : "top 70%",
-        // markers : true,
-        scrub : 2,
-    },
-    top : "-150%",
-    ease : Expo.easeInOut,
-})
+    })
+    .to("#nav #menu-icon .line", {
+        scrollTrigger: {
+            start: "bottom 20%",
+            scrub: 0.1,
+            trigger: "#nav",
+        },
+        backgroundColor: "black"
+    })
+    .to("#nav #minor-box1", {
+        ease: Expo.easeInOut,
+        left: "-100%",
+        scrollTrigger: {
+            start: "top 0%",
+            // markers : true,
+            trigger: "#home",
+            scrub: 1,
+        },
+    })
+    .to("#page3>img", {
+        scrollTrigger: {
+            trigger: "#page2",
+            start: "top 70%",
+            // markers : true,
+            scrub: 2,
+        },
+        top: "-150%",
+        ease: Expo.easeInOut,
+    })
 
 
-.to("#minor-box2 , #box3 #h1-1",{
-    left : "15%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#home",
-        start : "top 0%",
-        scrub : .1
-    }
-})
-.to("#box3 #h1-1",{
-    left : "10%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#home",
-        start : "top 0%",
-        scrub : .1
-    }
-})
-.to("#minor-box2, #box3 #h1-1",{
-    left : "-100%",
-    duration : 2,
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page5",
-        // markers : true,
-        start : "top 85%",
-        scrub : .5
-    }
-})
-.to("#minor-box3 , #box3 #h1-2",{
-    left : "13%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page4",
-        // markers : true,
-        start : "top 75%",
-        scrub : .1
-    }
-})
-.to("#minor-box3 , #box3 #h1-2",{
-    left : "-100%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page5 #txt2",
-        // markers : true,
-        start : "top 45%",
-        scrub : .1
-    }
-})
-.to("#minor-box4 ,#box3 #h1-3",{
-    left : "13%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page5 #txt1",
-        // markers : true,
-        start : "top 0%",
-        scrub : 1
-    }
-})
-.to("#minor-box4 ,#box3 #h1-3",{
-    left : "-100%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page5 #txt3",
-        // markers : true,
-        start : "top 50%",
-        scrub : 1
-    }
-})
-.to("#minor-box5 ,#box3 #h1-4",{
-    left : "13%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page5 #txt2",
-        // markers : true,
-        start : "top 0%",
-        scrub : 1
-    }   
-})
-.to("#minor-box5 ,#box3 #h1-4",{
-    left : "-100%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page6",
-        // markers : true,
-        start : "top 90%",
-        scrub : .1
-    }   
-})
-.to("#box3 #h1-5",{
-    left : "13%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page6",
-        // markers : true,
-        start : "top 100%",
-        end : "top 50%",
-        scrub : .1
-    }   
-})
-.to("#box3 #h1-5",{
-    left : "-100%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page7",
-        // markers : true,
-        start : "top 0%",
-        scrub : .1
-    }   
-})
-.to("#page7 .txt span",{
-    scrollTrigger : {
-        trigger : "#page7 h1",
-        scrub : 1,
-        start : "top 80%",
-        // end : "top 0%",
-        // markers : true,
-    },
-    // ease : Expo.easeInOut,
-    opacity : 0,
-    stagger : .1
-})
-.to("#minor-box6 , #box3 #h1-6",{
-    left : "13%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page8",
-        // markers : true,
-        start : "top 100%",
-        scrub : 1
-    }   
-})
-.to("#minor-box6 , #box3 #h1-6",{
-    left : "-100%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page9",
-        // markers : true,
-        start : "top 100%",
-        scrub : 1
-    }   
-})
-.to("#minor-box7 , #box3 #h1-7",{
-    left : "13%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page8",
-        // markers : true,
-        start : "50% 0%",
-        scrub : .5
-    }   
-})
-.to("#minor-box7 , #box3 #h1-7",{
-    left : "-100%",
-    ease : Expo.easeInOut,
-    scrollTrigger:{
-        trigger : "#page10",
-        // markers : true,
-        start : "50% 100%",
-        scrub : .5
-    }   
-})
-.to("#nav>img",{
-    display : "none",
-    scrollTrigger : {
-        trigger : "#page8",
-        // markers : true,
-        scrub : .5
-    }
-})
+    .to("#minor-box2 , #box3 #h1-1", {
+        left: "15%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#home",
+            start: "top 0%",
+            scrub: .1
+        }
+    })
+    .to("#box3 #h1-1", {
+        left: "10%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#home",
+            start: "top 0%",
+            scrub: .1
+        }
+    })
+    .to("#minor-box2, #box3 #h1-1", {
+        left: "-100%",
+        duration: 2,
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page5",
+            // markers : true,
+            start: "top 85%",
+            scrub: .5
+        }
+    })
+    .to("#minor-box3 , #box3 #h1-2", {
+        left: "13%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page4",
+            // markers : true,
+            start: "top 75%",
+            scrub: .1
+        }
+    })
+    .to("#minor-box3 , #box3 #h1-2", {
+        left: "-100%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page5 #txt2",
+            // markers : true,
+            start: "top 45%",
+            scrub: .1
+        }
+    })
+    .to("#minor-box4 ,#box3 #h1-3", {
+        left: "13%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page5 #txt1",
+            // markers : true,
+            start: "top 0%",
+            scrub: 1
+        }
+    })
+    .to("#minor-box4 ,#box3 #h1-3", {
+        left: "-100%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page5 #txt3",
+            // markers : true,
+            start: "top 50%",
+            scrub: 1
+        }
+    })
+    .to("#minor-box5 ,#box3 #h1-4", {
+        left: "13%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page5 #txt2",
+            // markers : true,
+            start: "top 0%",
+            scrub: 1
+        }
+    })
+    .to("#minor-box5 ,#box3 #h1-4", {
+        left: "-100%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page6",
+            // markers : true,
+            start: "top 90%",
+            scrub: .1
+        }
+    })
+    .to("#box3 #h1-5", {
+        left: "13%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page6",
+            // markers : true,
+            start: "top 100%",
+            end: "top 50%",
+            scrub: .1
+        }
+    })
+    .to("#box3 #h1-5", {
+        left: "-100%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page7",
+            // markers : true,
+            start: "top 0%",
+            scrub: .1
+        }
+    })
+    .to("#page7 .txt span", {
+        scrollTrigger: {
+            trigger: "#page7 h1",
+            scrub: 1,
+            start: "top 80%",
+            // end : "top 0%",
+            // markers : true,
+        },
+        // ease : Expo.easeInOut,
+        opacity: 0,
+        stagger: .1
+    })
+    .to("#minor-box6 , #box3 #h1-6", {
+        left: "13%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page8",
+            // markers : true,
+            start: "top 100%",
+            scrub: 1
+        }
+    })
+    .to("#minor-box6 , #box3 #h1-6", {
+        left: "-100%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page9",
+            // markers : true,
+            start: "top 100%",
+            scrub: 1
+        }
+    })
+    .to("#minor-box7 , #box3 #h1-7", {
+        left: "13%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page8",
+            // markers : true,
+            start: "50% 0%",
+            scrub: .5
+        }
+    })
+    .to("#minor-box7 , #box3 #h1-7", {
+        left: "-100%",
+        ease: Expo.easeInOut,
+        scrollTrigger: {
+            trigger: "#page10",
+            // markers : true,
+            start: "50% 100%",
+            scrub: .5
+        }
+    })
+    .to("#nav>img", {
+        display: "none",
+        scrollTrigger: {
+            trigger: "#page8",
+            // markers : true,
+            scrub: .5
+        }
+    })
 
 
 
 
-.to("#page3 h1",{
-    scrollTrigger : {
-        // markers : true,
-        trigger: "#page3",
-        start : "top 90%",
-        end : "bottom 90%",
-        scrub : .5,  
-    },
-    stagger : .4,
-    opacity : 1,
-    duration : .5,
-    ease : Power3.easeInOut
-})
-.to("#page4 h1",{
-    scrollTrigger : {
-        // markers : true,
-        trigger: "#page4",
-        start : "top 95%",
-        end : "bottom 95%",
-        scrub : .5,  
-    },
-    stagger : .3,
-    opacity : 1,
-    duration : .5,
-    ease : Power3.easeInOut
-})
-.to("#page5 video",{
-    scrollTrigger:{
-        trigger : "#page5 video",
-        start : "top 18%",
-        // markers : true,
-        pin : true,
-        end : "bottom -150%"
+    .to("#page3 h1", {
+        scrollTrigger: {
+            // markers : true,
+            trigger: "#page3",
+            start: "top 90%",
+            end: "bottom 90%",
+            scrub: .5,
+        },
+        stagger: .4,
+        opacity: 1,
+        duration: .5,
+        ease: Power3.easeInOut
+    })
+    .to("#page4 h1", {
+        scrollTrigger: {
+            // markers : true,
+            trigger: "#page4",
+            start: "top 95%",
+            end: "bottom 95%",
+            scrub: .5,
+        },
+        stagger: .3,
+        opacity: 1,
+        duration: .5,
+        ease: Power3.easeInOut
+    })
+    .to("#page5 video", {
+        scrollTrigger: {
+            trigger: "#page5 video",
+            start: "top 17%",
+            // markers: true,
+            pin: true,
+            end: "bottom -118%"
+        }
+    })
+    .to("#page5 #pink", {
+        scrollTrigger: {
+            trigger: "#page5 #pink",
+            start: "top 0%",
+            // markers : true,
+            pin: true,
+            end: "bottom -145%"
+        }
+    })
+
+
+// document.querySelector("#menu-icon").addEventListener("click", function () {
+//     var navbar = document.querySelector("#nav-page")
+//     navbar.style.css.top = "0%"
+// })
+
+function navup() {
+    gsap.to("#menu-icon .line", {
+        backgroundColor: "black",
+        duration: .4,
+        ease: Expo.easeInOut
+    })
+}
+
+// function navdown() {
+//     gsap.to("#popup-nav .tags a",{
+//         top : "100%",
+//         duration : .1,
+//         ease : Expo.easeInOut
+//     })
+// }
+
+
+var popupnav = document.querySelector("#nav-page")
+var navimg = document.querySelector("#nav>img")
+
+var menuicon = document.querySelector("#menu-icon")
+var line1 = document.querySelector("#menu-icon .line")
+var line2 = document.querySelector("#menu-icon .line:nth-child(2)")
+var flag50 = 0;
+
+menuicon.addEventListener('click', function () {
+    if (flag50 === 0) {
+        popupnav.style.top = "0%";
+        line1.style.transform = "translate(-1.6px, 4px) rotate(45deg)";
+        line2.style.transform = " translate(-1px, -7.5px) rotate(-45deg)";
+        gsap.to("#menu-icon .line", {
+            backgroundColor: "black",
+            duration: .6,
+            ease: Expo.easeInOut
+        })
+        gsap.to("#nav>img", {
+            filter: "invert(0%)",
+            duration: .8,
+            ease: Expo.easeInOut
+        })
+        flag50 = 1
+    } else {
+        line1.style.transform = "translate(0,0) rotate(0deg)";
+        line2.style.transform = " translate(0,0) rotate(0deg)";
+        gsap.to("#menu-icon .line", {
+            backgroundColor: "white",
+            duration: .6,
+            ease: Expo.easeInOut
+        })
+        gsap.to("#nav>img", {
+            filter: "invert(100%)",
+            duration: .8,
+            ease: Expo.easeInOut
+        })
+
+        popupnav.style.top = "-100%";
+        flag50 = 0
     }
 })
-.to("#page5 #pink",{
-    scrollTrigger:{
-        trigger : "#page5 #pink",
-        start : "top 0%",
-        // markers : true,
-        pin : true,
-        end : "bottom -145%"
-    }
-})
+// &.one {
+//     transform: translate(0, -50%) rotate(45deg);
+//     margin-top: 0;
+//   }
+//   &.two {
+//     transform: translate(0, -50%) rotate(-45deg);
+//     margin-top: 0;

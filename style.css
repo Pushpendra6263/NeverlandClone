@@ -3,6 +3,7 @@
     font-weight: 100;
     src: url(./fonts/PlayfairDisplay-Regular.ttf);
 }
+
 @font-face {
     font-family: gilroylte;
     src: url(./fonts/Gilroy-Light.otf);
@@ -11,18 +12,20 @@
 
 
 
-*{
+* {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
-html,body{
-     width: 100%;
-     min-height: 100vh;
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
 }
 
 
-#loader{
+#loader {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -30,14 +33,15 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(233,177,203);
+    background-color: rgb(233, 177, 203);
 }
-#loader>img{
+
+#loader>img {
     height: 100px;
     filter: invert(100%);
 }
 
-#nav{
+#nav {
     position: fixed;
     z-index: 99999999;
     padding: 60px 70px;
@@ -46,30 +50,43 @@ html,body{
     display: flex;
     justify-content: space-between;
 }
-#nav>img{
+
+#nav>img {
     height: 65px;
     filter: invert(100%);
     margin-top: -20px;
     margin-left: 35px;
+    z-index: 99999;
 }
+
 #nav #menu-icon {
-    height: 12px ;
+    height: 12px;
     width: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 99999;
 }
-#nav #menu-icon .line{
+
+#nav #menu-icon .line {
     height: 2px;
     width: 100%;
     background-color: white;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    /* transform : translate(-1.6px, 4px) rotate(45deg) */
+}
+#nav #menu-icon .line:nth-child(2) {
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    /* transform : translate(-1px, -7.5px) rotate(-45deg) */
 }
 
 
-#box2{
+#box2 {
     position: relative;
     position: absolute;
-    transform: translate(-50%,-50%) rotate(-90deg);
+    transform: translate(-50%, -50%) rotate(-90deg);
     height: 40px;
     width: 220px;
     bottom: 13%;
@@ -77,63 +94,76 @@ html,body{
     z-index: 9999;
     overflow: hidden;
 }
-.same-box{
+
+.same-box {
     position: absolute;
     display: flex;
     align-items: center;
     z-index: 9999999999;
 }
-.same-box:hover h6{
+
+.same-box:hover h6 {
     margin-left: 15px;
 }
 
-#minor-box1{
+#minor-box1 {
     left: 10%;
 }
-#minor-box2{
+
+#minor-box2 {
     left: -100%;
 }
-#minor-box3{
+
+#minor-box3 {
     left: -100%;
 }
-#minor-box4{
+
+#minor-box4 {
     left: -100%;
 }
-#minor-box5{
+
+#minor-box5 {
     left: -100%;
 }
-#minor-box6{
+
+#minor-box6 {
     left: -100%;
 }
-#minor-box7{
+
+#minor-box7 {
     left: -100%;
 }
-.same-box img{
+
+.same-box img {
     height: 37px;
     margin-right: 5px;
     filter: invert(40%);
 }
 
-#minor-box1 h6{
+#minor-box1 h6 {
     color: white;
 }
-#minor-box6 h6{
+
+#minor-box6 h6 {
     color: white;
 }
-#minor-box1 img{
-   filter: invert(0%);
-}
-#minor-box6 img{
+
+#minor-box1 img {
     filter: invert(0%);
- }
-.same-box>h6{
+}
+
+#minor-box6 img {
+    filter: invert(0%);
+}
+
+.same-box>h6 {
     font-size: 14px;
     font-family: gilroylte;
     color: rgb(188, 188, 188);
 }
 
 
-#box3{
+#box3 {
     height: 40px;
     width: 350px;
     position: absolute;
@@ -142,7 +172,8 @@ html,body{
     overflow: hidden;
 
 }
-#box3 h1{
+
+#box3 h1 {
     font-family: gilroylte;
     font-weight: 100;
     font-size: 1.5vw;
@@ -150,30 +181,34 @@ html,body{
     left: -100%;
     top: 20%;
 }
-#h1-2 span{
+
+#h1-2 span {
     display: inline-block;
     height: 1px;
     width: 100px;
     background-color: black;
 }
-#h1-3 span{
+
+#h1-3 span {
     display: inline-block;
     height: 1px;
     width: 100px;
     background-color: black;
 }
-#h1-4 span{
+
+#h1-4 span {
     display: inline-block;
     height: 1px;
     width: 100px;
     background-color: black;
 }
-#box3 #h1-6{
+
+#box3 #h1-6 {
     color: white
 }
 
 
-#overlay{
+#overlay {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -181,7 +216,8 @@ html,body{
     height: 100vh;
     width: 100%;
 }
-#overlay h1{
+
+#overlay h1 {
     font-family: playfair;
     color: white;
     position: absolute;
@@ -193,7 +229,8 @@ html,body{
     line-height: 1;
     text-align: center;
 }
-#overlay p{
+
+#overlay p {
     font-family: gilroylte;
     font-weight: 100;
     color: white;
@@ -204,24 +241,27 @@ html,body{
     width: 20%;
     line-height: 1;
     text-align: center;
-} 
+}
 
 
-#main{
-    height: 100vh;
-    width: 100%; 
-    background-color: rgb(255,251,241);
-}
-#home{
+#main {
     height: 100vh;
     width: 100%;
-    background-color: rgb(255,251,241);
+    background-color: rgb(255, 251, 241);
 }
-canvas{
+
+#home {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(255, 251, 241);
+}
+
+canvas {
     height: 100vh;
     width: 100%;
 }
-#page2{
+
+#page2 {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -229,48 +269,55 @@ canvas{
     align-items: center;
     /* overflow: hidden; */
     position: relative;
-    background-color: rgb(255,251,241);
+    /* background-color: rgb(255, 251, 241); */
+    background-color: #FFF9F1;
 }
-#page2 h1{
+
+#page2 h1 {
     font-family: playfair;
     font-size: 6vw;
     font-weight: 100;
     line-height: 1;
     width: 68%;
     text-align: center;
-    
+
 }
-.txt2{
+
+.txt2 {
     opacity: 0;
 }
 
 
 
 
-#page3>img{
+#page3>img {
     position: absolute;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     height: 125%;
     top: 100%;
     left: 50%;
     z-index: 999999;
 }
-#page3{
+
+#page3 {
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: rgb(255,251,241);
+    /* background-color: rgb(255, 251, 241); */
+    background-color: #FFF9F1;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-#page3 h3{
+
+#page3 h3 {
     font-size: 1.7vw;
     font-family: gilroylte;
     font-weight: 100;
     margin-bottom: 50px;
 }
-#page3 h1{
+
+#page3 h1 {
     font-size: 4.5vw;
     font-family: "Playfair display";
     font-weight: 100;
@@ -282,26 +329,30 @@ canvas{
 
 
 
-#page4{
+#page4 {
     height: 100vh;
     width: 100%;
-    background-color: rgb(255,251,241);
+    /* background-color: rgb(255, 251, 241); */
+    background-color: #FFF9F1;
     display: flex;
     align-items: center;
     flex-direction: column;
     /* background-color: blue; */
     position: relative;
 }
-#page4 h1:nth-child(1){
+
+#page4 h1:nth-child(1) {
     font-size: 1.7vw;
     font-family: gilroylte;
     font-weight: 100;
     margin-bottom: 50px;
 }
-#page4 h1:nth-child(5){
+
+#page4 h1:nth-child(5) {
     margin-bottom: 40px;
 }
-#page4 h1{
+
+#page4 h1 {
     font-size: 4.5vw;
     font-family: playfair;
     width: 78%;
@@ -312,13 +363,14 @@ canvas{
 }
 
 
-#page5{
+#page5 {
     position: relative;
     height: 350vh;
     width: 100%;
     background-color: white;
 }
-#page5 video{
+
+#page5 video {
     position: absolute;
     /* top: 50%; */
     right: 5%;
@@ -329,34 +381,40 @@ canvas{
     position: absolute;
     height: 300px;
     width: 100%;
-    background-color: rgb(255,251,241);
+    background-color: #FFF9F1;
+    /* background-color: rgb(255, 251, 241); */
 }
-#page5 .p5-text{
+
+#page5 .p5-text {
     position: absolute;
     height: 90vh;
     width: 64%;
     z-index: 99;
     padding: 10px 50px;
 }
-.p5-text .h1-box{
+
+.p5-text .h1-box {
     padding: 20px 0px 0px 62px;
     height: 50vh;
     width: 100%;
 }
-.p5-text h1{
-  font-family: playfair; 
-  font-weight: 100; 
-  font-size: 3.4vw;
-  line-height: 1.1;
+
+.p5-text h1 {
+    font-family: playfair;
+    font-weight: 100;
+    font-size: 3.4vw;
+    line-height: 1.1;
 }
-.p5-text h4{
+
+.p5-text h4 {
     display: flex;
     align-items: center;
     font-family: gilroylte;
     font-weight: 100;
     font-size: 1.5vw;
 }
-.p5-text h4 span{
+
+.p5-text h4 span {
     display: inline-block;
     height: 1px;
     width: 35px;
@@ -367,79 +425,96 @@ canvas{
 
 
 
-#txt1{
+#txt1 {
     top: 10%;
     /* background-color: purple; */
 }
-#txt2{
+
+#txt2 {
     top: 40%;
     /* background-color: red */
 }
-#txt3{
+
+#txt3 {
     top: 70%;
     /* background-color: greenyellow */
 }
 
 
-#page6{
+#page6 {
     height: 100vh;
     width: 100%;
     /* background-color: rgb(150, 30, 30); */
     padding: 0 70px;
 }
-#page6 img{
+
+#page6 img {
     height: 15px;
     margin: 80px 40px;
 }
-#page6 img:nth-child(4){
+
+#page6 img:nth-child(4) {
     height: 30px;
 }
-#page6 img:nth-child(5){
+
+#page6 img:nth-child(5) {
     height: 40px;
 }
-#page6 img:nth-child(8){
+
+#page6 img:nth-child(8) {
     height: 50px;
 }
-#page6 img:nth-child(9){
+
+#page6 img:nth-child(9) {
     height: 30px;
 }
-#page6 img:nth-child(10){
+
+#page6 img:nth-child(10) {
     height: 25px;
 }
-#page6 img:nth-child(11){
+
+#page6 img:nth-child(11) {
     height: 30px;
 }
-#page6 img:nth-child(12){
+
+#page6 img:nth-child(12) {
     height: 20px;
 }
-#page6 img:nth-child(13){
+
+#page6 img:nth-child(13) {
     height: 50px;
 }
-#page6 img:nth-child(14){
+
+#page6 img:nth-child(14) {
     height: 30px;
 }
-#page6 img:nth-child(15){
+
+#page6 img:nth-child(15) {
     height: 25px;
 }
-#page6 img:nth-child(16){
+
+#page6 img:nth-child(16) {
     height: 30px;
 }
-#page6 img:nth-child(17){
+
+#page6 img:nth-child(17) {
     height: 35px;
 }
-#page6 img:nth-child(18){
+
+#page6 img:nth-child(18) {
     height: 30px;
 }
 
 
-#page7{
+#page7 {
     height: 60vh;
     width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
 }
-#page7 h1{
+
+#page7 h1 {
     margin-bottom: 30px;
     font-size: 6.5vw;
     width: 36%;
@@ -450,12 +525,13 @@ canvas{
 }
 
 
-#page8{
+#page8 {
     height: 100vh;
     width: 100%;
-    background-color: rgb(255,251,241);
+    background-color: rgb(255, 251, 241);
 }
-#page8>canvas{
+
+#page8>canvas {
     height: 100vh;
     width: 100%;
     background-image: url(https://neverland.agency/assets/0001.79b3f4bd.webp);
@@ -465,27 +541,30 @@ canvas{
 }
 
 
-#page9{
+#page9 {
     position: relative;
     height: 100vh;
     width: 100%;
-    background-color: rgb(255,251,241);
+    background-color: rgb(255, 251, 241);
     padding: 100px 80px;
 }
-#page9 h4{
+
+#page9 h4 {
     font-size: 1.5vw;
     font-family: gilroylte;
     margin-bottom: 70px;
     font-weight: 100;
 }
-#page9 h1{
+
+#page9 h1 {
     font-size: 4.7vw;
-    font-family: playfair; 
+    font-family: playfair;
     line-height: .9;
     font-weight: 100;
     width: 70%;
 }
-.tags{
+
+.tags {
     position: absolute;
     text-decoration: none;
     color: rgb(236, 140, 150);
@@ -495,11 +574,13 @@ canvas{
     height: 40px;
     overflow: hidden;
 }
-#page9 #p9-tag{
+
+#page9 #p9-tag {
     top: 65%;
     right: 7%;
 }
-.line1{
+
+.line1 {
     position: relative;
     display: block;
     height: 2px;
@@ -510,7 +591,8 @@ canvas{
     left: 0%;
     width: 35%;
 }
-.line2{
+
+.line2 {
     position: relative;
     display: block;
     height: 2px;
@@ -521,17 +603,19 @@ canvas{
     right: 0%;
     width: 0%;
 }
-#page9 #p9-tag:hover .line1{
+
+#page9 #p9-tag:hover .line1 {
     width: 70%;
     left: 70%;
 }
-#page9 #p9-tag:hover .line2{
-    width: 35%;
+
+#page9 #p9-tag:hover .line2 {
+    /* width: 35%; */
 }
 
 
 
-#page10{
+#page10 {
     height: 115vh;
     width: 100%;
     /* background-color: rgb(255,255,255);
@@ -539,48 +623,55 @@ canvas{
     display: flex;
     position: relative;
 }
-#p10-left{
-    background-color: rgb(255,251,241);
+
+#p10-left {
+    background-color: rgb(255, 251, 241);
     height: 100%;
     width: 50%;
     padding: 120px 80px 0 80px;
 }
-#p10-left h5{
+
+#p10-left h5 {
     font-family: gilroylte;
     font-size: 1.4vw;
     font-weight: 100;
     margin-bottom: 40px;
 }
-#p10-left h1{
-    font-family: playfair; 
+
+#p10-left h1 {
+    font-family: playfair;
     font-size: 4.7vw;
     font-weight: 100;
     line-height: .9;
     margin-bottom: 70px;
 
 }
-#p10-left #p10-tag:hover .line1{
+
+#p10-left #p10-tag:hover .line1 {
     width: 70%;
     left: 70%;
 }
-#p10-left #p10-tag:hover #line2{
+
+#p10-left #p10-tag:hover #line2 {
     width: 35%;
 }
 
 
-#p10-right{
+#p10-right {
     background-color: white;
     height: 100vh;
     width: 50%;
     padding: 120px 80px 0 80px;
 }
-#p10-right>h5{
+
+#p10-right>h5 {
     font-family: gilroylte;
     font-size: 1.4vw;
     font-weight: 100;
     margin-bottom: 40px;
 }
-#p10-right>h4{
+
+#p10-right>h4 {
     font-family: gilroylte;
     font-size: 1.4vw;
     font-weight: 100;
@@ -588,80 +679,94 @@ canvas{
     display: flex;
     align-items: center;
 }
-#p10-right h4 #p10-line{
+
+#p10-right h4 #p10-line {
     margin: 0 10px;
     display: block;
     height: 2px;
     width: 100px;
     background-color: rgb(236, 140, 150);
 }
-#p10-right>h4 #pink-txt{
+
+#p10-right>h4 #pink-txt {
     font-family: gilroylte;
     font-size: 1.4vw;
     font-weight: 100;
     color: rgb(236, 140, 150);
 }
-#p10-right #paras{
+
+#p10-right #paras {
     display: flex;
     gap: 30px;
     margin-bottom: 80px;
 }
-#p10-right #paras h5{
+
+#p10-right #paras h5 {
     font-family: gilroylte;
     font-size: 1.4vw;
     font-weight: 100;
 }
-#p10-right #paras h4{
+
+#p10-right #paras h4 {
     font-family: gilroylte;
     font-size: 1.2vw;
     font-weight: 100;
     color: rgb(236, 140, 150);
 }
-#p10-right h3{
+
+#p10-right h3 {
     font-family: gilroylte;
     font-size: 1.4vw;
     font-weight: 100;
     margin-bottom: 30px;
 }
-#p10-right p{
+
+#p10-right p {
     font-family: gilroylte;
     font-size: 1.4vw;
     font-weight: 100;
     margin-bottom: 100px;
 }
-#p10-right #p10-tag2:hover .line1{
+
+#p10-right #p10-tag2:hover .line1 {
     width: 70%;
     left: 70%;
 }
-#p10-right #p10-tag2:hover #line2{
+
+#p10-right #p10-tag2:hover #line2 {
     width: 35%;
 }
-#p10-bottom{
+
+#p10-bottom {
     position: absolute;
     bottom: 2%;
     width: 100%;
     height: 80px;
-    background-color:transparent;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-family: gilroylte;
     padding: 0 60px;
 }
-#p10-bottom h1{
+
+#p10-bottom h1 {
     font-size: 1.1vw;
 }
-#p10-bottom h1 strong{
+
+#p10-bottom h1 strong {
     color: rgb(236, 140, 150);
 }
-#p10-bottom>img{
+
+#p10-bottom>img {
     height: 65px;
     position: absolute;
-    transform: translate(0%,-50%);
+    transform: translate(0%, -50%);
     top: 50%;
     left: 47.5%;
 }
-#p10-bottom #icons>a{
+
+#p10-bottom #icons>a {
     font-size: 2.3vw;
     color: rgb(236, 140, 150);
     text-decoration: none;
@@ -669,7 +774,8 @@ canvas{
     position: relative;
     z-index: 9999999999;
 }
-#p10-bottom #icons .aline{
+
+#p10-bottom #icons .aline {
     position: relative;
     height: 2px;
     width: 0%;
@@ -679,6 +785,114 @@ canvas{
     left: 0;
     transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
 }
-#p10-bottom #icons a:hover .aline{
+
+#p10-bottom #icons a:hover .aline {
+    width: 100%;
+}
+
+
+#nav-page {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 100vh;
+    transition: cubic-bezier(.27, -0.05, 0, .19) .6s;
+    width: 100%;
+    background-color: #FFFAF0;
+    z-index: 99999;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 50px;
+}
+
+#nav-page>#left {
+    padding: 30px 20px;
+    height: 80%;
+    width: 40%;
+    /* background-color: rgb(0, 34, 255); */
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-page>#left h4 {
+    font-family: gilroylte;
+    font-size: 20px;
+}
+
+#nav-page>#left h1 {
+    font-family: playfair;
+    width: 70%;
+    font-size: 75px;
+    margin-top: 50px;
+    line-height: 1.5;
+    font-weight: 100;
+}
+
+#nav-page>#left p {
+    font-family: gilroylte;
+    font-weight: bold;
+    margin-top: 90px;
+    font-size: 13px;
+}
+
+#nav-page>#right {
+    position: relative;
+    height: 80%;
+    width: 40%;
+    /* background-color: rgb(0, 255, 204); */
+    padding: 30px 20px;
+}
+#nav-page>#right h4 {
+    font-family: gilroylte;
+    font-size: 20px;
+}
+
+#nav-page>#right h1 {
+    font-family: playfair;
+    width: 70%;
+    font-size: 40px;
+    margin-top: 45px;
+    line-height: 1.2;
+    font-weight: 100;
+}
+
+#nav-page>#right a {
+    font-family: gilroylte;
+    margin-top: 90px;
+    font-size: 20px;
+}
+#nav-page #right a:hover .line1 {
+    width: 70%;
+    left: 65%;
+}
+#nav-page #right #nav-icons{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+}
+
+#nav-page #right #nav-icons>a {
+    font-size: 2.3vw;
+    color: rgb(236, 140, 150);
+    text-decoration: none;
+    margin-right: 20px;
+    position: relative;
+    z-index: 999;
+}
+
+#nav-page #right #nav-icons .aline {
+    position: relative;
+    height: 2px;
+    width: 0%;
+    background-color: rgb(236, 140, 150);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+}
+
+#nav-page #right #nav-icons a:hover .aline {
     width: 100%;
 }
