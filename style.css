@@ -808,6 +808,7 @@ canvas {
 }
 
 #nav-page>#left {
+    position : relative;
     padding: 30px 20px;
     height: 80%;
     width: 40%;
